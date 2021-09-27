@@ -62,7 +62,7 @@ contract RoTToken is ERC20 {
         // Send the tokens to the receiver address since the requirements are fulfilled
         _transfer(address(this), _lockers[id].receiver, _lockers[id].amount);
 
-        // Delete the locker definition after the tokens sent and it will be unusable anymore
+        // Delete the locker definition after the tokens sent and it will be unusable anymore (Makes the struct values all zeros, so that's the way how it becomes 'unusable')
         delete _lockers[id];
     }
 }
