@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Rage of Titans Token Custom ERC20 Implementation with TimeLock mechanism",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,5 +17,8 @@
     "game"
   ],
   "author": "Serdar Tepeyurt <serdar@arsuite.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2"
+  }
 }
