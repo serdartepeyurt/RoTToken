@@ -2,9 +2,9 @@
   "name": "rot-token-custom-erc20-token",
   "version": "1.0.0",
   "description": "Rage of Titans Token Custom ERC20 Implementation with TimeLock mechanism",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "remixd -s ./"
   },
   "keywords": [
     "rage",
@@ -20,5 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "@openzeppelin/contracts": "^4.3.2"
+  },
+  "devDependencies": {
+    "remixd": "^0.2.4"
   }
 }
