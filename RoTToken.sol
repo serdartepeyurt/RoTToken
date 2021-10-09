@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: unlicensed
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
@@ -17,8 +17,9 @@ contract RoTToken is ERC20 {
     TokenLockDefinition[7] public _lockers;
 
     constructor() ERC20("Rage of Titans Token", "RoT") {
-        _mint(address(this), 1000000000 * (10 ** uint256(decimals())));
+        _mint(address(this), 1000000000 * (10 ** uint256(decimals()))); // Fixed amount of 1 Billion tokens are minted
         
+        // Tokens locked for different timelines
         _lockers[0] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 50000000 * (10 ** uint256(decimals())), 1632761000); // [0] Team Release 1 - 50M Tokens - At UTC Monday, September 27, 2021 16:35:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
         _lockers[1] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 50000000 * (10 ** uint256(decimals())), 1632761000); // [1] Team Release 2 - 50M Tokens - At UTC Monday, September 27, 2021 16:35:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
         _lockers[2] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 50000000 * (10 ** uint256(decimals())), 1632761000); // [2] Team Release 3 - 50M Tokens - At UTC Monday, September 27, 2021 16:35:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
