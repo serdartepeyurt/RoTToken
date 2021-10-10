@@ -11,7 +11,11 @@ contract RoTToken is ERC20 {
         uint256 releaseTime; // Time format is UTC Unix Timestamp
     }
     
-    address public _icoWallet = 0xDa315c070626C858AB899973068Aa18dbfe31Ea3;
+    address public _icoWallet = 0xf0B19DEa23EA5d9e7895D12C607a67d7068FEde7;
+    address public _teamWallet = 0xbD236e9eEcAD891FBbF4895caeB6276F61303D07;
+    address public _marketingWallet = 0x739C058a525aDf8604559608D3a351f74F316372;
+    address public _daoWallet = 0xa5beAc34eEbEE0F30211a0c8e1829a919ab2cAC7;
+    
 
     // Token lock definitions
     TokenLockDefinition[7] public _lockers;
@@ -20,15 +24,15 @@ contract RoTToken is ERC20 {
         _mint(address(this), 1000000000 * (10 ** uint256(decimals()))); // Fixed amount of 1 Billion tokens are minted
         
         // Tokens locked for different timelines
-        _lockers[0] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 30000000 * (10 ** uint256(decimals())), 1660521600); // [0] Team Release 1 - 30M Tokens - Near Closed Beta Release - 3% - At UTC Monday, August 15th, 2022 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
-        _lockers[1] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 30000000 * (10 ** uint256(decimals())), 1665792000); // [1] Team Release 2 - 30M Tokens  - Public Beta Release - 3% - At UTC Saturday, October 15th, 2022 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
-        _lockers[2] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 40000000 * (10 ** uint256(decimals())), 1673740800); // [2] Team Release 3 - 40M Tokens - Public Release - 4% - At UTC Sunday, January 15th, 2023 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
-        _lockers[3] = TokenLockDefinition(0x8416c47dc391f1A8Aa4e77AcD986160cc5dA78d7, 50000000 * (10 ** uint256(decimals())), 1684108800); // [3] Team Release 4 - 50M Tokens - 6mo After Public Release - 5% - At UTC Monday, May 15th, 2023 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
-        _lockers[4] = TokenLockDefinition(0x7a503Ea8Eae86b482464772a9ec4a6b0Fe5699Bc, 100000000 * (10 ** uint256(decimals())), 1648771200); // [4] Marketing Release - 100M Tokens - Before Alpha Release - 10% - At UTC Friday, Apr 1st, 2022 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
-        _lockers[5] = TokenLockDefinition(0x1701681C9a8243047d332aA08eE41b29c6350758, 200000000 * (10 ** uint256(decimals())), 1671062400); // [5] Reserve Release - 200M Tokens - Before Public Release - 20% - At UTC Thursday, 15.12.2022 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
-        _lockers[6] = TokenLockDefinition(0x1701681C9a8243047d332aA08eE41b29c6350758, 200000000 * (10 ** uint256(decimals())), 1671062400); // [6] Treasury Release - 200M Tokens - Before Public Release - 20% - At UTC Thursday 15.12.2022 00:00:00 - To address 0xDa315c070626C858AB899973068Aa18dbfe31Ea3
+        _lockers[0] = TokenLockDefinition(_teamWallet, 30000000 * (10 ** uint256(decimals())), 1660521600); // [0] Team Release 1 - 30M Tokens - Near Closed Beta Release - 3% - At UTC Monday, August 15th, 2022 00:00:00
+        _lockers[1] = TokenLockDefinition(_teamWallet, 30000000 * (10 ** uint256(decimals())), 1665792000); // [1] Team Release 2 - 30M Tokens  - Public Beta Release - 3% - At UTC Saturday, October 15th, 2022 00:00:00
+        _lockers[2] = TokenLockDefinition(_teamWallet, 40000000 * (10 ** uint256(decimals())), 1673740800); // [2] Team Release 3 - 40M Tokens - Public Release - 4% - At UTC Sunday, January 15th, 2023 00:00:00
+        _lockers[3] = TokenLockDefinition(_teamWallet, 50000000 * (10 ** uint256(decimals())), 1684108800); // [3] Team Release 4 - 50M Tokens - 6mo After Public Release - 5% - At UTC Monday, May 15th, 2023 00:00:00
+        _lockers[4] = TokenLockDefinition(_marketingWallet, 100000000 * (10 ** uint256(decimals())), 1648771200); // [4] Marketing Release - 100M Tokens - Before Alpha Release - 10% - At UTC Friday, Apr 1st, 2022 00:00:00
+        _lockers[5] = TokenLockDefinition(_daoWallet, 200000000 * (10 ** uint256(decimals())), 1671062400); // [5] Reserve Release - 200M Tokens - Before Public Release - 20% - At UTC Thursday, 15.12.2022 00:00:00
+        _lockers[6] = TokenLockDefinition(_daoWallet, 200000000 * (10 ** uint256(decimals())), 1671062400); // [6] Treasury Release - 200M Tokens - Before Public Release - 20% - At UTC Thursday 15.12.2022 00:00:00
         
-        // Send 250M Tokens to the ICO Distribution Wallet
+        // Send 300M Tokens to the ICO Distribution Wallet ( 25% ICO and 5% Partnerships)
         _transfer(address(this), _icoWallet, 300000000 * (10 ** uint256(decimals())));
         
         // Total of 1 Billion tokens are distributed or locked.
